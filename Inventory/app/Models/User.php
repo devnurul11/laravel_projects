@@ -15,7 +15,5 @@ class User extends Model
         'password',
         'otp'
     ];
-    // protected $atrributes = [
-    //     'otp' =>0
-    // ];
+    
 };
