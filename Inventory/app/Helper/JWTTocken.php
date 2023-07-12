@@ -16,7 +16,7 @@ class JWTTocken{
 
         return JWT::encode($payload, $key, 'HS256');
     }
-    public static function DecodeTocken('$tocken'){
+    public static function DecodeTocken('$tocken'):string{
         $key =  env('JWT_KEY');
         $deCoded = JWT::decode($tocken, new Key($key, 'HS256');
     }
