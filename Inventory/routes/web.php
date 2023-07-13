@@ -13,3 +13,5 @@ Route::post('/OTPVarified', [UserController::class, 'OTPVarified']);
 Route::post('/setPassword', [UserController::class, 'setPassword']);
 Route::post('/profileUpdate', [UserController::class, 'profileUpdate']);
 
+
+
