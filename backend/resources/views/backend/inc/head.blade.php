@@ -39,4 +39,5 @@
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{asset('css/bracket.css')}}">
     <link rel="stylesheet" href="{{asset('css/bracket.dark.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
   </head>

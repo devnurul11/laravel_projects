@@ -12,7 +12,7 @@
     
     <!-- ########## START: MAIN PANEL ########## -->
     <div id="content-div">
-        @yield('contnet')
+        @yield('content')
     </div>
         
     <!-- ########## END: MAIN PANEL ########## -->
