@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Mail\OTPMail;
 use App\Helper\JWTToken;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
@@ -12,6 +13,23 @@ use Symfony\Component\Console\Input\Input;
 
 class UserController extends Controller
 {
+
+    function LoginPage():View{
+        return view('pages.auth.login-page');   
+     }
+    function RegistrationPage():View{
+        return view('pages.auth.registration-page');   
+     }
+    function SendOtpPage():View{
+        return view('pages.auth.sand-otp-page');   
+     }
+    function VerifyOTPPage():View{
+        return view('pages.auth.verify-otp-page');   
+     }
+    function ResetPasswordPage():View{
+        return view('pages.auth.reset-pass-page');   
+     }
+
     function userLogin(Request $request){
             $res = User::where($request->input())->count();
 
