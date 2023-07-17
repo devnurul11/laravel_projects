@@ -26,6 +26,6 @@ Route::get('/resetPassword',[UserController::class,'ResetPasswordPage']);
 
 
 //DashboardController
- 
-Route::get('/dashboard',[DashboardController::class,'DashboardPage']);
 
+Route::get('/dashboard',[DashboardController::class,'DashboardPage']);
+fcjfg dujdtgc
