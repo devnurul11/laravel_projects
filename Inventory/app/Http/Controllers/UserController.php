@@ -31,23 +31,27 @@ class UserController extends Controller
      }
 
     function userLogin(Request $request){
-            $res = User::where($request->input())->count();
+            $count = User::where('email', "=", $request->input('email'))
+            ->where('password', "=", $request->input('password'))
+            ->count() ;
 
-            if ($res == 1){
-                //token create
+            if ($count == 1){
+
+                //token create and user issued
                 $token = JWTToken::createJWTToken($request->input('email'));
-                return response()->json(['msg' =>'Succes','data' => $token]);
+                return response()->json(['status' =>'Succes', 'message' =>'User Login Success'], 200)->cookie('token', $token, 60*60*24);
             }
         else {
             return response()->json([
-                'msg' =>'Faild',
-                'data' => 'unthurized'
-            ]);
+                'status'=> "failed",
+                'message' =>'unthurized'
+                
+            ], 401);
         }
     }
-        function userRegister(Request $request){
+    function userRegister(Request $request){
             return User::create($request->input());
-        }
+    }
     function OTPToMail(Request $request){
         $UserMail = $request->input('email');
         $otp = rand(1000, 9999);

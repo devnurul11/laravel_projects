@@ -64,7 +64,7 @@
         }
         else{
             showLoader();
-            let res=await axios.post("/user-registration", {firstName:firstName, lastName:lastName, email:email, password:password, mobile:mobile})
+            let res=await axios.post("/userRegister", {firstName:firstName, lastName:lastName, email:email, password:password, mobile:mobile})
             hideLoader();
             if(res.status===200 && res.data['status']==="success"){
                 successToast(res.data['message']);

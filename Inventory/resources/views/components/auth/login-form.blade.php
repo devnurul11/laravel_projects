@@ -36,7 +36,7 @@
         }
         else{
             showLoader();
-            let res=await axios.post("/user-login", {email:email, password:pass,})
+            let res=await axios.post("/userLogin", {email:email, password:pass,})
             hideLoader();
             if(res.status===200){
                 successToast("Login Successful");
