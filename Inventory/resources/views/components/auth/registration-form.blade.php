@@ -41,8 +41,39 @@
 </div>
 
 <script>
-    function onRegistration() {
-        
-        
+    async function onRegistration() {
+        let email=document.getElementById('email').value;
+        let password=document.getElementById('password').value;
+        let firstName=document.getElementById('firstName').value;
+        let lastName=document.getElementById('lastName').value;
+        let mobile=document.getElementById('mobile').value;
+        if(email.length===0){
+            errorToast("Email Required !");
+        }
+        else if(password.length===0){
+            errorToast("Password Required !")
+        }
+        else if(firstName.length===0){
+            errorToast("First Name Required")
+        }
+        else if(lastName.length===0){
+            errorToast("Last Name Required")
+        }
+        else if(mobile.length===0){
+            errorToast("Mobile Number Required !")
+        }
+        else{
+            showLoader();
+            let res=await axios.post("/userRegister", {firstName:firstName, lastName:lastName, email:email, password:password, mobile:mobile})
+            hideLoader();
+            if(res.status===200 && res.data['status']==="success"){
+                successToast(res.data['message']);
+                window.location.href="/userLogin"
+            }
+            else{
+                errorToast(res.data['message']);
+            }
+        }
     }
 </script>
+      

@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Mockery\Expectation;
 use Symfony\Component\Console\Input\Input;
 
 class UserController extends Controller
@@ -50,7 +51,28 @@ class UserController extends Controller
         }
     }
     function userRegister(Request $request){
-            return User::create($request->input());
+        try {
+            // Attempt to create a new user with the provided data
+            return User::create([
+                'firstName' => $request->input('firstName'),
+                'lastName' => $request->input('lastName'),
+                'email' => $request->input('email'),
+                'mobile' => $request->input('mobile'),
+                'password' => $request->input('password')
+            ]); 
+        
+            // If user creation is successful, respond with a success message
+            return response()->json([
+                'status' => 'Success',
+                'message' => 'User Registration Successful'
+            ], 200);
+        } catch (Expectation $e) {
+            // Something went wrong during user creation
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Something Wrong'
+            ], 400);
+        }
     }
     function OTPToMail(Request $request){
         $UserMail = $request->input('email');
