@@ -23,7 +23,7 @@
         }
         else{
             showLoader();
-            let res=await axios.post("/send-otp",{email:email});
+            let res=await axios.post("/OTPToMail",{email:email});
             hideLoader();
             if(res.status===200){
                 sessionStorage.setItem('email',email);

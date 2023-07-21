@@ -51,13 +51,15 @@ class UserController extends Controller
         }
     }
     function userRegister(Request $request){
+        //return User::create($request->input());
+
         try {
             // Attempt to create a new user with the provided data
-            return User::create([
+             User::create([
                 'firstName' => $request->input('firstName'),
                 'lastName' => $request->input('lastName'),
                 'email' => $request->input('email'),
-                'mobile' => $request->input('mobile'),
+                'phone' => $request->input('mobile'),
                 'password' => $request->input('password')
             ]); 
         
@@ -65,8 +67,8 @@ class UserController extends Controller
             return response()->json([
                 'status' => 'Success',
                 'message' => 'User Registration Successful'
-            ], 200);
-        } catch (Expectation $e) {
+            ],200);
+        } catch (\Exception $e) {
             // Something went wrong during user creation
             return response()->json([
                 'status' => 'failed',
@@ -76,7 +78,7 @@ class UserController extends Controller
     }
     function OTPToMail(Request $request){
         $UserMail = $request->input('email');
-        $otp = rand(1000, 9999);
+        $otp = rand(100000, 999999);
 
         //mail chaeck method
         $res = User::where($request->input())->count();
@@ -87,29 +89,46 @@ class UserController extends Controller
 
             //database update by otp
             User::where($request->input())->update(['otp'=>$otp]);
-            return response()->json(['msg' =>'Succes', 'data'=>'Otp sent to you mail']);
+            return response()->json(['status' =>'Succes', 'message'=>'Otp sent to you mail'],200);
         }else{
 
             return response()->json([
-                'msg' =>'Faild',
-                'data' => 'unthurized'
-            ]);
+                'status' =>'Faild',
+                'message' => 'unthurized'
+            ],400);
         }
     }
     function OTPVarified(Request $request){
         $res = User::where($request->input())->count();
         if($res ==1 ){
         User::where($request->input())->update(['otp'=>"0"]);
-        return response()->json(['msg' =>'Succes', 'data'=>'Verified']);
+        return response()->json(['status' =>'Succes', 'message'=>'Verified']);
         }else{
-            return response()->json(['msg' =>'Faild', 'data' => 'unthurized']);
+            return response()->json(['status' =>'Faild', 'message' => 'unthurized']);
         }
         
     }
     function setPassword(Request $request){
-        $pass = $request->input('password');
-        User::where($request->input())->update(['password'=>$pass ]);
-        return response()->json(['msg' =>'Succes', 'data'=>'Updated']);
+        // $pass = $request->input('password');
+        // User::where($request->input())->update(['password'=>$pass ]);
+        // return response()->json(['msg' =>'Succes', 'data'=>'Updated']);
+
+        try{
+            $email=$request->header('email');
+            $password=$request->input('password');
+            User::where('email','=',$email)->update(['password'=>$password]);
+            // Remove Cookie...
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Request Successful',
+            ],200);
+
+        }catch (\Exception $exception){
+            return response()->json([
+                'status' => 'fail',
+                'message' => 'Something Went Wrong',
+            ],400);
+        }
     }
     function profileUpdate(){
     

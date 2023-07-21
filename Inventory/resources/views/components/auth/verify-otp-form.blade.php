@@ -19,11 +19,11 @@
    async function VerifyOtp() {
 
         let code=document.getElementById('code').value;
-        if(code.length!==4){
-            errorToast("4 Digit Verification Code Required !");
+        if(code.length!==6){
+            errorToast("6 Digit Verification Code Required !");
         }
         else{
-            let res=await axios.post("/verify-otp",{
+            let res=await axios.post("/OTPVarified",{
                 otp:code,
                 email:sessionStorage.getItem('email')
             })

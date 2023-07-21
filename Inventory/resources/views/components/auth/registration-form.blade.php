@@ -30,7 +30,10 @@
                         </div>
                         <div class="row m-0 p-0">
                             <div class="col-md-4 p-2">
-                                <button onclick="onRegistration()" class="btn mt-3 w-100  btn-primary">Complete</button>
+                                <button onclick="onRegistration()" class="btn mt-3 w-100  btn-primary">Register</button>
+                            </div>
+                            <div class="col-md-4 p-2">
+                                <button class="btn mt-3 w-100  btn-primary"><a href="{{url('/userLogin')}}">Alredy An Account??</a></button>
                             </div>
                         </div>
                     </div>
