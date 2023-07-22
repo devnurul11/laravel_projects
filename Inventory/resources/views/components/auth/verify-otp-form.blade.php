@@ -8,7 +8,7 @@
                     <label>6 Digit OTP has been sent in your email</label>
                     <input id="code" placeholder="Code" class="form-control" type="text"/>
                     <br/>
-                    <button onclick="VerifyOtp()"  class="btn w-100 float-end btn-primary">Next</button>
+                    <button onclick="verifyOtp()"  class="btn w-100 float-end btn-primary"> Next </button>
                 </div>
             </div>
         </div>
@@ -16,24 +16,27 @@
 </div>
 
 <script>
-   async function VerifyOtp() {
+async function verifyOtp() {
+  let otp = document.getElementById('code').value;
 
-        let code=document.getElementById('code').value;
-        if(code.length!==6){
-            errorToast("6 Digit Verification Code Required !");
-        }
-        else{
-            let res=await axios.post("/OTPVarified",{
-                otp:code,
-                email:sessionStorage.getItem('email')
-            })
-            if(res.status===200){
-                sessionStorage.clear();
-                window.location.href="/resetPassword";
-            }
-            else{
-                errorToast("Something Went Wrong !")
-            }
-        }
+  try {
+    const response = await axios.post('/verifyOtp', { otp });
+    const data = response.data;
+
+    if (data.status === 'Success') {
+      // The OTP is verified successfully
+      
+      successToast(data.message);
+      window.location.href = '/resetPassword';
+     
+      // Perform any additional actions or redirect to a new page
+    } else {
+      // The OTP verification failed
+      alert(data.message);
     }
+  } catch (error) {
+    // Handle any errors that occurred during the request
+    console.error(error);
+  }
+}
 </script>

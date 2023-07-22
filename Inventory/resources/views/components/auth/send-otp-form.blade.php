@@ -27,7 +27,7 @@
             hideLoader();
             if(res.status===200){
                 sessionStorage.setItem('email',email);
-                window.location.href="/verifyOtp"
+                window.location.href ='/verifyOtp';
             }
             else{
                 errorToast("Email Not Found")

@@ -98,15 +98,32 @@ class UserController extends Controller
             ],400);
         }
     }
-    function OTPVarified(Request $request){
-        $res = User::where('otp', $request->input('otp'))->count();
+    // function OTPVarified(Request $request){
+    //     $res = User::where('otp', $request->input('otp'))->count();
     
-        if ($res == 1) {
-            User::where('otp', $request->input('otp'))->update(['otp' => "0"]);
-            return response()->json(['status' => 'Success', 'message' => 'Verified', redirect()->route('route.name')]);
+    //     if ($res == 1) {
+    //         User::where('otp', $request->input('otp'))->update(['otp' => "0"]);
+    //         return response()->json(['status' => 'Success', 'message' => 'Verified', redirect()->route('resetPassword')]);
         
+    //     } else {
+    //         return response()->json(['status' => 'Failed', 'message' => 'Unauthorized']);
+    //     }
+    // }
+
+    public function verifyOtp(Request $request)
+    {
+        $otp = $request->input('otp');
+        $user = User::where('otp', $otp)->first();
+
+        if ($user) {
+            // OTP is valid, you can perform any additional actions here if needed
+            // For example, update the 'otp' field to mark it as used
+            $user->update(['otp' => "0"]);
+
+            return response()->json(['status' => 'Success', 'message' => 'OTP Verified']);
         } else {
-            return response()->json(['status' => 'Failed', 'message' => 'Unauthorized']);
+            // OTP is invalid
+            return response()->json(['status' => 'Fail', 'message' => 'Invalid OTP']);
         }
     }
     function setPassword(Request $request){
