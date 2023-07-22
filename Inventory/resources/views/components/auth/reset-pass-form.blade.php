@@ -32,7 +32,7 @@
             errorToast("Password & Confirm Password Should be same !")
         }
         else{
-            let res=await axios.post("/setPassword",{password:pass});
+            let res=await axios.post("/setPassword",{password:pass, email:sessionStorage.getItem('email')});
             if(res.status===200){
                 console.log(res)
                 // window.location.href="/userLogin"

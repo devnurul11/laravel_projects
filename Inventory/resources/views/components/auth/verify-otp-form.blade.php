@@ -20,7 +20,10 @@ async function verifyOtp() {
   let otp = document.getElementById('code').value;
 
   try {
-    const response = await axios.post('/verifyOtp', { otp, email:sessionStorage.getItem('email') });
+    const response = await axios.post('/verifyOtp',  {
+                otp:otp,
+                email:sessionStorage.getItem('email')
+            });
     const data = response.data;
 
     if (data.status === 'Success') {
@@ -28,10 +31,10 @@ async function verifyOtp() {
       
       successToast(data.message);
 
-      sessionStorage.clear();
+      
       setTimeout(() => {
         window.location.href = '/resetPassword';
-      }, 2000);
+      }, 1000);
       
      
       // Perform any additional actions or redirect to a new page

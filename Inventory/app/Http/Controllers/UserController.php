@@ -89,8 +89,8 @@ class UserController extends Controller
 
             //database update by otp
             User::where($request->input())->update(['otp'=>$otp]);
-            
-            return response()->json(['status' =>'Succes', 'message'=>'Otp sent to you mail'],200);
+            $otpToken = JWTToken::createOtpJWTToken($request->input('email'));
+            return response()->json(['status' =>'Succes', 'message'=>'Otp sent to you mail'],200)->cookie('token', $otpToken);
         }else{
 
             return response()->json([
@@ -110,39 +110,32 @@ class UserController extends Controller
             // OTP is valid, you can perform any additional actions here if needed
             // For example, update the 'otp' field to mark it as used
             $user->update(['otp' => "0"]);
-            $otpToken = JWTToken::createOtpJWTToken($request->input('email'));
-            return response()->json(['status' => 'Success', 'message' => 'OTP Verified'])->cookie('token', $otpToken);
+            
+            return response()->json(['status' => 'Success', 'message' => 'OTP Verified']) ;
         } else {
             // OTP is invalid
             return response()->json(['status' => 'Fail', 'message' => 'Invalid OTP']);
         }
     }
     function setPassword(Request $request){
-        // $pass = $request->input('password');
-         $data['email']=$request->header('email');
-            $data['password']=$request->input('password');
-            return($data);
+    
 
-            
-        // User::where($request->input())->update(['password'=>$pass ]);
-        // return response()->json(['msg' =>'Succes', 'data'=>'Updated']);
+        try{
+            $email=$request->header('email');
+            $password=$request->input('password');
+            User::where('email','=',$email)->update(['password'=>$password]);
+            // Remove Cookie...
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Request Successful',
+            ],200);
 
-        // try{
-            
-
-        //     User::where('email','=',$email)->update(['password'=>$password]);
-        //     // Remove Cookie...
-        //     return response()->json([
-        //         'status' => 'success',
-        //         'message' => 'Request Successful',
-        //     ],200);
-
-        // }catch (\Exception $exception){
-        //     return response()->json([
-        //         'status' => 'fail',
-        //         'message' => 'Something Went Wrong',
-        //     ],400);
-        // }
+        }catch (\Exception $exception){
+            return response()->json([
+                'status' => 'fail',
+                'message' => 'Something Went Wrong',
+            ],400);
+        }
     }
     function profileUpdate(){
     
