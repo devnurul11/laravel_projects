@@ -35,11 +35,11 @@
         try {
           const response = await axios.post("/setPassword", { password: password });
           hideLoader();
-          if (response.status === 200 && response.data['status'] === 'success') {
+          if (response.status === 200) {
             successToast(response.data['message']);
             setTimeout(function () {
               window.location.href = "/userLogin";
-            }, 1000);
+            }, 5000);
           } else {
             errorToast(response.data['message']);
           }

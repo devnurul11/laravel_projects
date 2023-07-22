@@ -113,7 +113,7 @@ class UserController extends Controller
             // For example, update the 'otp' field to mark it as used
             $user->update(['otp' => "0"]);
              $token =JWTToken::createJWTToken($email);
-            return response()->json(['status' => 'Success', 'message' => 'OTP Verified'])->cookie('token', $token, 60*2) ;
+            return response()->json(['status' => 'success', 'message' => 'OTP Verified'], 200)->cookie('token', $token, 60*2) ;
         } else {
             // OTP is invalid
             return response()->json(['status' => 'Fail', 'message' => 'Invalid OTP']);

@@ -20,13 +20,13 @@ async function verifyOtp() {
   let otp = document.getElementById('code').value;
 
   try {
-    const response = await axios.post('/verifyOtp',  {
+    let res = await axios.post('/verifyOtp',  {
                 otp:otp,
                 email:sessionStorage.getItem('email')
             });
-    const data = response.data;
+    
 
-    if (data.status === 'Success') {
+    if (res.status===200 && res.data['status']==='success'' ) {
       // The OTP is verified successfully
       
       successToast(data.message);

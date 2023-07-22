@@ -38,7 +38,7 @@
             showLoader();
             let res=await axios.post("/userLogin", {email:email, password:pass,})
             hideLoader();
-            if(res.status===200){
+            if(res.status===200 && res.data['status']==='success'){
                 successToast("Login Successful");
                 window.location.href="/dashboard";
             }
