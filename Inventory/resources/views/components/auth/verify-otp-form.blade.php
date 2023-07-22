@@ -31,10 +31,10 @@ async function verifyOtp() {
       
       successToast(data.message);
 
-      
+      sessionStorage.clear();
       setTimeout(() => {
         window.location.href = '/resetPassword';
-      }, 1000);
+      }, 500);
       
      
       // Perform any additional actions or redirect to a new page

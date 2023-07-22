@@ -4,14 +4,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Middleware\TokenVerificationMiddleware;
 
 //backend method route for auth or page route
 Route::post('/userLogin', [UserController::class, 'userLogin']);
 Route::post('/userRegister', [UserController::class, 'userRegister']);
 Route::post('/OTPToMail', [UserController::class, 'OTPToMail']);
 Route::post('/verifyOtp', [UserController::class, 'verifyOtp']);
-Route::post('/setPassword', [UserController::class, 'setPassword']);
+Route::post('/setPassword', [UserController::class, 'setPassword'])->middleware([TokenVerificationMiddleware::class]);
 Route::post('/profileUpdate', [UserController::class, 'profileUpdate']);
 
 

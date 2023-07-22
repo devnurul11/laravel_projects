@@ -104,14 +104,16 @@ class UserController extends Controller
     public function verifyOtp(Request $request)
     {
         $otp = $request->input('otp');
-        $user = User::where('otp', $otp)->first();
+        $email = $request->input('email');
+        $user = User::where('otp', $otp)->where('email', $email)->first();
+        
 
         if ($user) {
             // OTP is valid, you can perform any additional actions here if needed
             // For example, update the 'otp' field to mark it as used
             $user->update(['otp' => "0"]);
-            
-            return response()->json(['status' => 'Success', 'message' => 'OTP Verified']) ;
+             $token =JWTToken::createJWTToken($email);
+            return response()->json(['status' => 'Success', 'message' => 'OTP Verified'])->cookie('token', $token, 60*2) ;
         } else {
             // OTP is invalid
             return response()->json(['status' => 'Fail', 'message' => 'Invalid OTP']);

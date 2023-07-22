@@ -19,28 +19,35 @@
 </div>
 
 <script>
-   async function ResetPass() {
-        let pass=document.getElementById('pass').value;
-        let cpass=document.getElementById('cpass').value;
-        if(pass.length===0){
-            errorToast("Password Required");
+    async function ResetPass(){
+    
+      let password = document.getElementById('pass').value;
+      let cpassword = document.getElementById('cpass').value;
+    
+      if (password.length === 0) {
+        errorToast('Password is required');
+      } else if (cpassword.length === 0) {
+        errorToast('Confirm Password is required');
+      } else if (password !== cpassword) {
+        errorToast('Password and Confirm Password must be the same');
+      } else {
+        showLoader();
+        try {
+          const response = await axios.post("/setPassword", { password: password });
+          hideLoader();
+          if (response.status === 200 && response.data['status'] === 'success') {
+            successToast(response.data['message']);
+            setTimeout(function () {
+              window.location.href = "/userLogin";
+            }, 1000);
+          } else {
+            errorToast(response.data['message']);
+          }
+        } catch (error) {
+          hideLoader();
+          console.error("Error occurred:", error);
+          errorToast("An error occurred. Please try again later.");
         }
-        else if(cpass.length===0){
-            errorToast("Confirm Password Required")
-        }
-        else if(pass!==cpass){
-            errorToast("Password & Confirm Password Should be same !")
-        }
-        else{
-            let res=await axios.post("/setPassword",{password:pass, email:sessionStorage.getItem('email')});
-            if(res.status===200){
-                console.log(res)
-                // window.location.href="/userLogin"
-            }
-            else{
-                console.log(res)
-                errorToast("Request Fail !");
-            }
-        }
-    }
+      }
+}
 </script>

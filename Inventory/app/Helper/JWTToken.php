@@ -40,7 +40,7 @@ class JWTToken {
 
             return $decoded->userEmail;
         } 
-        catch (Exception $e) {
+        catch (\Exception $e) {
             return "Unauthorized";
         }
     }
