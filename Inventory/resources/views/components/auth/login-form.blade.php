@@ -7,7 +7,7 @@
                     <br/>
                     <input id="email" placeholder="User Email" class="form-control" type="email"/>
                     <br/>
-                    <input id="pass" placeholder="User Password" class="form-control" type="password"/>
+                    <input id="password" placeholder="User Password" class="form-control" type="password"/>
                     <br/>
                     <button onclick="SubmitLogin()" class="btn w-100 btn-primary">Next</button>
                     <hr/>
@@ -23,30 +23,30 @@
         </div>
     </div>
 </div>
+
 <script>
 
-   async function SubmitLogin() {
-        let email=document.getElementById('email').value;
-        let pass=document.getElementById('pass').value;
-        if(email.length===0){
-            errorToast('Email Required !')
-        }
-        else if(pass.length===0){
-            errorToast('Password Required !')
-        }
-        else{
-            showLoader();
-            let res=await axios.post("/userLogin", {email:email, password:pass,})
-            hideLoader();
-            if(res.status===200 && res.data['status']==='success'){
-                successToast("Login Successful");
-                window.location.href="/dashboard";
+async function SubmitLogin() {
+            let email=document.getElementById('email').value;
+            let password=document.getElementById('password').value;
+
+            if(email.length===0){
+                errorToast("Email is required");
+            }
+            else if(password.length===0){
+                errorToast("Password is required");
             }
             else{
-                errorToast("Invalid User Or Password");
+                showLoader();
+                let res=await axios.post("/userLogin",{email:email, password:password});
+                hideLoader()
+                if(res.status===200 && res.data['status']==='success'){
+                    window.location.href="/dashboard";
+                }
+                else{
+                    errorToast(res.data['message']);
+                }
             }
-        }
-
     }
 
 </script>

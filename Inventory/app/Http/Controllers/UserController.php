@@ -31,25 +31,28 @@ class UserController extends Controller
         return view('pages.auth.reset-pass-page');   
      }
 
-    function userLogin(Request $request){
-            $count = User::where('email', "=", $request->input('email'))
-            ->where('password', "=", $request->input('password'))
-            ->count() ;
-
-            if ($count == 1){
-
-                //token create and user issued
-                $token = JWTToken::createJWTToken($request->input('email'));
-                return response()->json(['status' =>'Succes', 'message' =>'User Login Success'], 200)->cookie('token', $token, 60*60*24);
-            }
-        else {
+     function userLogin(Request $request){
+        $count=User::where('email','=',$request->input('email'))
+             ->where('password','=',$request->input('password'))
+             ->count();
+ 
+        if($count==1){
+            // User Login-> JWT Token Issue
+            $token=JWTToken::CreateToken($request->input('email'));
             return response()->json([
-                'status'=> "failed",
-                'message' =>'unthurized'
-                
-            ], 401);
+                'status' => 'success',
+                'message' => 'User Login Successful',
+            ],200)->cookie('token',$token,60*24*30);
         }
-    }
+        else{
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'unauthorized'
+            ],401);
+ 
+        }
+ 
+     }
     function userRegister(Request $request){
         //return User::create($request->input());
 
@@ -99,8 +102,6 @@ class UserController extends Controller
             ],400);
         }
     }
-
-
     public function verifyOtp(Request $request)
     {
         $otp = $request->input('otp');
@@ -139,6 +140,12 @@ class UserController extends Controller
             ],400);
         }
     }
+    
+
+
+
+
+
     function profileUpdate(){
     
     }
