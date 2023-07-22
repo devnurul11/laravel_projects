@@ -99,14 +99,15 @@ class UserController extends Controller
         }
     }
     function OTPVarified(Request $request){
-        $res = User::where($request->input())->count();
-        if($res ==1 ){
-        User::where($request->input())->update(['otp'=>"0"]);
-        return response()->json(['status' =>'Succes', 'message'=>'Verified']);
-        }else{
-            return response()->json(['status' =>'Faild', 'message' => 'unthurized']);
-        }
+        $res = User::where('otp', $request->input('otp'))->count();
+    
+        if ($res == 1) {
+            User::where('otp', $request->input('otp'))->update(['otp' => "0"]);
+            return response()->json(['status' => 'Success', 'message' => 'Verified', redirect()->route('route.name')]);
         
+        } else {
+            return response()->json(['status' => 'Failed', 'message' => 'Unauthorized']);
+        }
     }
     function setPassword(Request $request){
         // $pass = $request->input('password');

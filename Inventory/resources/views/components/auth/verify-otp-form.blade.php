@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <h4>ENTER OTP CODE</h4>
                     <br/>
-                    <label>4 Digit Code Here</label>
+                    <label>6 Digit OTP has been sent in your email</label>
                     <input id="code" placeholder="Code" class="form-control" type="text"/>
                     <br/>
                     <button onclick="VerifyOtp()"  class="btn w-100 float-end btn-primary">Next</button>
