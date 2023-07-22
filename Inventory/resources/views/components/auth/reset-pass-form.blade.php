@@ -34,9 +34,11 @@
         else{
             let res=await axios.post("/setPassword",{password:pass});
             if(res.status===200){
-                window.location.href="/userLogin"
+                console.log(res)
+                // window.location.href="/userLogin"
             }
             else{
+                console.log(res)
                 errorToast("Request Fail !");
             }
         }

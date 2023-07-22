@@ -20,14 +20,19 @@ async function verifyOtp() {
   let otp = document.getElementById('code').value;
 
   try {
-    const response = await axios.post('/verifyOtp', { otp });
+    const response = await axios.post('/verifyOtp', { otp, email:sessionStorage.getItem('email') });
     const data = response.data;
 
     if (data.status === 'Success') {
       // The OTP is verified successfully
       
       successToast(data.message);
-      window.location.href = '/resetPassword';
+
+      sessionStorage.clear();
+      setTimeout(() => {
+        window.location.href = '/resetPassword';
+      }, 2000);
+      
      
       // Perform any additional actions or redirect to a new page
     } else {
