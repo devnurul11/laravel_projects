@@ -1,4 +1,4 @@
-/*Line Progress*/
+﻿/*Line Progress*/
 .LoadingOverlay {
     position:absolute;
     display:block;
@@ -9,7 +9,7 @@
     bottom: 0;
     cursor: pointer;
     z-index: 500000 !important;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 .Line-Progress .indeterminate {
     background-color: #cb0c9f;
@@ -106,3 +106,4 @@
         right: -8%;
     }
 }
+

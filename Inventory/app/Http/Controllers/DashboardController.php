@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
-    function DashboardPage(){
+    function DashboardPage():View{
         return view('pages.dashboard.dashboard-page');
     }
 }

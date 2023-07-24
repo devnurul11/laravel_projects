@@ -24,9 +24,10 @@
     </div>
 </div>
 
+
 <script>
 
-async function SubmitLogin() {
+  async function SubmitLogin() {
             let email=document.getElementById('email').value;
             let password=document.getElementById('password').value;
 
@@ -38,7 +39,7 @@ async function SubmitLogin() {
             }
             else{
                 showLoader();
-                let res=await axios.post("/userLogin",{email:email, password:password});
+                let res=await axios.post("/user-login",{email:email, password:password});
                 hideLoader()
                 if(res.status===200 && res.data['status']==='success'){
                     window.location.href="/dashboard";

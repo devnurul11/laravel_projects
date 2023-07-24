@@ -5,46 +5,39 @@
                 <div class="card-body">
                     <h4>ENTER OTP CODE</h4>
                     <br/>
-                    <label>6 Digit OTP has been sent in your email</label>
-                    <input id="code" placeholder="Code" class="form-control" type="text"/>
+                    <label>4 Digit Code Here</label>
+                    <input id="otp" placeholder="Code" class="form-control" type="text"/>
                     <br/>
-                    <button onclick="verifyOtp()"  class="btn w-100 float-end btn-primary"> Next </button>
+                    <button onclick="VerifyOtp()"  class="btn w-100 float-end btn-primary">Next</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <script>
-async function verifyOtp() {
-  let otp = document.getElementById('code').value;
-
-  try {
-    let res = await axios.post('/verifyOtp',  {
-                otp:otp,
+   async function VerifyOtp() {
+        let otp = document.getElementById('otp').value;
+        if(otp.length !==4){
+           errorToast('Invalid OTP')
+        }
+        else{
+            showLoader();
+            let res=await axios.post('/verify-otp', {
+                otp: otp,
                 email:sessionStorage.getItem('email')
-            });
-    
+            })
+            hideLoader();
 
-    if (res.status===200 && res.data['status']==='success'' ) {
-      // The OTP is verified successfully
-      
-      successToast(data.message);
-
-      sessionStorage.clear();
-      setTimeout(() => {
-        window.location.href = '/resetPassword';
-      }, 500);
-      
-     
-      // Perform any additional actions or redirect to a new page
-    } else {
-      // The OTP verification failed
-      alert(data.message);
+            if(res.status===200 && res.data['status']==='success'){
+                successToast(res.data['message'])
+                sessionStorage.clear();
+                setTimeout(() => {
+                    window.location.href='/resetPassword'
+                }, 1000);
+            }
+            else{
+                errorToast(res.data['message'])
+            }
+        }
     }
-  } catch (error) {
-    // Handle any errors that occurred during the request
-    console.error(error);
-  }
-}
 </script>

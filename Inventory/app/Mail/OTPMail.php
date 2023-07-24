@@ -17,9 +17,10 @@ class OTPMail extends Mailable
      * Create a new message instance.
      */
     public $otp;
+
     public function __construct($otp)
     {
-        $this->otp = $otp;
+        $this->otp=$otp;
     }
 
     /**
@@ -38,7 +39,7 @@ class OTPMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'email.OTP',
+            view: 'email.OTPMail',
         );
     }
 
