@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa322c53454393ed775cfe4807d54a50",
+    "content-hash": "6ee1bff37df5884cf9e1c46d8de69863",
     "packages": [
         {
             "name": "brick/math",
@@ -431,6 +431,69 @@
                 }
             ],
             "time": "2023-01-14T14:17:03+00:00"
+        },
+        {
+            "name": "firebase/php-jwt",
+            "version": "v6.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "48b0210c51718d682e53210c24d25c5a10a2299b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/48b0210c51718d682e53210c24d25c5a10a2299b",
+                "reference": "48b0210c51718d682e53210c24d25c5a10a2299b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4||^8.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^6.5||^7.4",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.5",
+                "psr/cache": "^1.0||^2.0",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0"
+            },
+            "suggest": {
+                "ext-sodium": "Support EdDSA (Ed25519) signatures",
+                "paragonie/sodium_compat": "Support EdDSA (Ed25519) signatures when libsodium is not present"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "keywords": [
+                "jwt",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/firebase/php-jwt/issues",
+                "source": "https://github.com/firebase/php-jwt/tree/v6.8.0"
+            },
+            "time": "2023-06-20T16:45:35+00:00"
         },
         {
             "name": "fruitcake/php-cors",
@@ -2695,16 +2758,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.11.19",
+            "version": "v0.11.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "1724ceff278daeeac5a006744633bacbb2dc4706"
+                "reference": "4f00ee9e236fa6a48f4560d1300b9c961a70a7ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/1724ceff278daeeac5a006744633bacbb2dc4706",
-                "reference": "1724ceff278daeeac5a006744633bacbb2dc4706",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/4f00ee9e236fa6a48f4560d1300b9c961a70a7ec",
+                "reference": "4f00ee9e236fa6a48f4560d1300b9c961a70a7ec",
                 "shasum": ""
             },
             "require": {
@@ -2765,9 +2828,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.11.19"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.18"
             },
-            "time": "2023-07-15T19:42:19+00:00"
+            "time": "2023-05-23T02:31:11+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -5578,16 +5641,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.15.3",
+            "version": "2.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "c83e88a30524f9360b11f585f71e6b17313b7187"
+                "reference": "aac9304c5ed61bf7b1b7a6064bf9806ab842ce73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/c83e88a30524f9360b11f585f71e6b17313b7187",
-                "reference": "c83e88a30524f9360b11f585f71e6b17313b7187",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/aac9304c5ed61bf7b1b7a6064bf9806ab842ce73",
+                "reference": "aac9304c5ed61bf7b1b7a6064bf9806ab842ce73",
                 "shasum": ""
             },
             "require": {
@@ -5637,7 +5700,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.15.3"
+                "source": "https://github.com/filp/whoops/tree/2.15.2"
             },
             "funding": [
                 {
@@ -5645,7 +5708,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-13T12:00:00+00:00"
+            "time": "2023-04-12T12:00:00+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -5700,16 +5763,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.10.5",
+            "version": "v1.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "a458fb057bfa2f5a09888a8aa349610be807b0c3"
+                "reference": "f56798088068af8bd75a8f2c4ecae022990fdf75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/a458fb057bfa2f5a09888a8aa349610be807b0c3",
-                "reference": "a458fb057bfa2f5a09888a8aa349610be807b0c3",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/f56798088068af8bd75a8f2c4ecae022990fdf75",
+                "reference": "f56798088068af8bd75a8f2c4ecae022990fdf75",
                 "shasum": ""
             },
             "require": {
@@ -5722,7 +5785,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.21.1",
                 "illuminate/view": "^10.5.1",
-                "laravel-zero/framework": "^10.1.1",
+                "laravel-zero/framework": "^10.0.2",
                 "mockery/mockery": "^1.5.1",
                 "nunomaduro/larastan": "^2.5.1",
                 "nunomaduro/termwind": "^1.15.1",
@@ -5762,7 +5825,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2023-07-14T10:26:01+00:00"
+            "time": "2023-07-11T15:18:27+00:00"
         },
         {
             "name": "laravel/sail",
@@ -5831,33 +5894,37 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.6.4",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "d1413755e26fe56a63455f7753221c86cbb88f66"
+                "reference": "13a7fa2642c76c58fa2806ef7f565344c817a191"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/d1413755e26fe56a63455f7753221c86cbb88f66",
-                "reference": "d1413755e26fe56a63455f7753221c86cbb88f66",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/13a7fa2642c76c58fa2806ef7f565344c817a191",
+                "reference": "13a7fa2642c76c58fa2806ef7f565344c817a191",
                 "shasum": ""
             },
             "require": {
                 "hamcrest/hamcrest-php": "^2.0.1",
                 "lib-pcre": ">=7.0",
-                "php": ">=7.4,<8.3"
+                "php": "^7.4 || ^8.0"
             },
             "conflict": {
                 "phpunit/phpunit": "<8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5 || ^9.3",
-                "psalm/plugin-phpunit": "^0.18.4",
-                "symplify/easy-coding-standard": "^11.5.0",
-                "vimeo/psalm": "^5.13.1"
+                "psalm/plugin-phpunit": "^0.18",
+                "vimeo/psalm": "^5.9"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.6.x-dev"
+                }
+            },
             "autoload": {
                 "files": [
                     "library/helpers.php",
@@ -5875,20 +5942,12 @@
                 {
                     "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
-                    "homepage": "https://github.com/padraic",
-                    "role": "Author"
+                    "homepage": "http://blog.astrumfutura.com"
                 },
                 {
                     "name": "Dave Marshall",
                     "email": "dave.marshall@atstsolutions.co.uk",
-                    "homepage": "https://davedevelopment.co.uk",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Nathanael Esayeas",
-                    "email": "nathanael.esayeas@protonmail.com",
-                    "homepage": "https://github.com/ghostwriter",
-                    "role": "Lead Developer"
+                    "homepage": "http://davedevelopment.co.uk"
                 }
             ],
             "description": "Mockery is a simple yet flexible PHP mock object framework",
@@ -5906,13 +5965,10 @@
                 "testing"
             ],
             "support": {
-                "docs": "https://docs.mockery.io/",
                 "issues": "https://github.com/mockery/mockery/issues",
-                "rss": "https://github.com/mockery/mockery/releases.atom",
-                "security": "https://github.com/mockery/mockery/security/advisories",
-                "source": "https://github.com/mockery/mockery"
+                "source": "https://github.com/mockery/mockery/tree/1.6.2"
             },
-            "time": "2023-07-19T15:51:02+00:00"
+            "time": "2023-06-07T09:07:52+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -6502,16 +6558,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.2.6",
+            "version": "10.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1c17815c129f133f3019cc18e8d0c8622e6d9bcd"
+                "reference": "68484779b5a2ed711fbdeba6ca01910d87acdff2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1c17815c129f133f3019cc18e8d0c8622e6d9bcd",
-                "reference": "1c17815c129f133f3019cc18e8d0c8622e6d9bcd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/68484779b5a2ed711fbdeba6ca01910d87acdff2",
+                "reference": "68484779b5a2ed711fbdeba6ca01910d87acdff2",
                 "shasum": ""
             },
             "require": {
@@ -6583,7 +6639,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.6"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.4"
             },
             "funding": [
                 {
@@ -6599,7 +6655,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-17T12:08:28+00:00"
+            "time": "2023-07-10T04:06:08+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -7111,16 +7167,16 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "6.0.1",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "7ea9ead78f6d380d2a667864c132c2f7b83055e4"
+                "reference": "aab257c712de87b90194febd52e4d184551c2d44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/7ea9ead78f6d380d2a667864c132c2f7b83055e4",
-                "reference": "7ea9ead78f6d380d2a667864c132c2f7b83055e4",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/aab257c712de87b90194febd52e4d184551c2d44",
+                "reference": "aab257c712de87b90194febd52e4d184551c2d44",
                 "shasum": ""
             },
             "require": {
@@ -7160,8 +7216,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/global-state/issues",
-                "security": "https://github.com/sebastianbergmann/global-state/security/policy",
-                "source": "https://github.com/sebastianbergmann/global-state/tree/6.0.1"
+                "source": "https://github.com/sebastianbergmann/global-state/tree/6.0.0"
             },
             "funding": [
                 {
@@ -7169,7 +7224,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-07-19T07:19:23+00:00"
+            "time": "2023-02-03T07:07:38+00:00"
         },
         {
             "name": "sebastian/lines-of-code",
