@@ -5,6 +5,18 @@
 </head>
 <body>
     <h1>Contact Us</h1>
+    @if (session('success'))
+        <div style="color: green;">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div style="color: red;">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <form method="post" action="{{ route('send.email') }}">
         @csrf
         <label for="email">Email:</label>

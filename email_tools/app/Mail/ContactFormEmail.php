@@ -3,7 +3,9 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ContactFormEmail extends Mailable
@@ -23,6 +25,16 @@ class ContactFormEmail extends Mailable
         $this->emailData = $emailData;
     }
 
+
+
+    public function envelope(): Envelope
+    {
+    
+      return new Envelope(
+            subject:'hello'
+        );
+    }
+
     /**
      * Build the message.
      *
@@ -34,4 +46,13 @@ class ContactFormEmail extends Mailable
                     ->from($this->emailData['email'])
                     ->view('emails.contact_form', ['emailData' => $this->emailData]);
     }
+
+    public function content(): Content
+    {
+        return new Content(
+            view: 'email.OTPMail',
+        );
+    }
+
+
 }
